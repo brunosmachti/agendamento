@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+<li>Ola <%= current_user.email %></li> 
+<ul>
+<% @users.each do |user| %>
+  <li>Nome: <%= user.name %> | Funcao: <%= user.type %> | Especialidade: <%= user.specialty %></li>
+<% end %> 
+
+</ul>
+
+<li>
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_user_session_path)  %>  
+  </li>
+<% end %>
